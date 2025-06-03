@@ -29,6 +29,40 @@
             }
         }
     </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .transition-custom {
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .card-hover {
+                @apply hover:shadow-xl hover:-translate-y-1 transition-all duration-300;
+            }
+            .section-padding {
+                @apply py-12 md:py-24;
+            }
+            .carousel-item {
+                transition: opacity 1s ease-in-out;
+            }
+            .carousel-indicator {
+                transition: all 0.3s ease;
+            }
+            .chat-bubble-right {
+                @apply bg-chat-primary text-white rounded-tl-xl rounded-tr-xl rounded-bl-xl p-4 inline-block max-w-[80%];
+            }
+            .chat-bubble-left {
+                @apply bg-chat-secondary text-chat-dark rounded-tl-xl rounded-tr-xl rounded-br-xl p-4 inline-block max-w-[80%];
+            }
+            .chat-timestamp {
+                @apply text-xs text-gray-500 mt-1 ml-2;
+            }
+        }
+    </style>
 <!-- 悬浮二维码 -->
 <div class="fixed bottom-6 right-6 z-40 transform transition-all duration-300">
   <div class="group relative">
@@ -48,58 +82,24 @@
     </div>
   </div>
 </div>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
-            .text-shadow {
-                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            }
-            .transition-custom {
-                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-            .card-hover {
-                @apply hover:shadow-xl hover:-translate-y-1 transition-all duration-300;
-            }
-            .section-padding {
-                @apply py-16 md:py-24;
-            }
-            .carousel-item {
-                transition: opacity 1s ease-in-out;
-            }
-            .carousel-indicator {
-                transition: all 0.3s ease;
-            }
-            .chat-bubble-right {
-                @apply bg-chat-primary text-white rounded-tl-xl rounded-tr-xl rounded-bl-xl p-4 inline-block max-w-[80%];
-            }
-            .chat-bubble-left {
-                @apply bg-chat-secondary text-chat-dark rounded-tl-xl rounded-tr-xl rounded-br-xl p-4 inline-block max-w-[80%];
-            }
-            .chat-timestamp {
-                @apply text-xs text-gray-500 mt-1 ml-2;
-            }
-        }
-    </style>
+
 </head>
 <body class="font-inter text-dark bg-light">
     <!-- 导航栏 -->
     <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm">
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
             <a href="#" class="flex items-center space-x-2">
-                
                 <span class="text-xl font-bold text-primary">邯郸庆典活动策划</span>
             </a>
             
             <!-- 桌面导航 -->
-            <nav class="hidden md:flex items-center space-x-8">
-                <a href="#services" class="font-medium text-dark hover:text-primary transition-colors">服务内容</a>
-                <a href="#business" class="font-medium text-dark hover:text-primary transition-colors">业务范围</a>
-                <a href="#products" class="font-medium text-dark hover:text-primary transition-colors">租赁产品</a>
-                <a href="#culture" class="font-medium text-dark hover:text-primary transition-colors">企业文化</a>
-                <a href="#process" class="font-medium text-dark hover:text-primary transition-colors">服务流程</a>
-                <a href="#contact" class="bg-primary text-white px-5 py-2 rounded-lg hover:bg-primary/90 transition-colors">联系我们</a>
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="#services" class="font-medium text-dark hover:text-primary transition-colors text-sm">服务内容</a>
+                <a href="#business" class="font-medium text-dark hover:text-primary transition-colors text-sm">业务范围</a>
+                <a href="#products" class="font-medium text-dark hover:text-primary transition-colors text-sm">租赁产品</a>
+                <a href="#culture" class="font-medium text-dark hover:text-primary transition-colors text-sm">企业文化</a>
+                <a href="#process" class="font-medium text-dark hover:text-primary transition-colors text-sm">服务流程</a>
+                <a href="#contact" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm">联系我们</a>
             </nav>
             
             <!-- 移动端菜单按钮 -->
@@ -150,26 +150,26 @@
                 </div>
                 
                 <!-- 轮播控制按钮 -->
-                <button id="prev-slide" class="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 flex items-center justify-center text-white z-10">
+                <button id="prev-slide" class="absolute left-2 top-1/2 transform -translate-y-1/2 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 flex items-center justify-center text-white z-10">
                     <i class="fa fa-angle-left text-xl"></i>
                 </button>
-                <button id="next-slide" class="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 flex items-center justify-center text-white z-10">
+                <button id="next-slide" class="absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 flex items-center justify-center text-white z-10">
                     <i class="fa fa-angle-right text-xl"></i>
                 </button>
             </div>
         </div>
         <div class="container mx-auto px-4 z-10 text-center">
-            <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-white leading-tight mb-6 text-shadow">
+            <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white leading-tight mb-6 text-shadow">
                 专业庆典活动策划服务
             </h1>
-            <p class="text-[clamp(1rem,2vw,1.25rem)] text-white/90 max-w-2xl mx-auto mb-10">
+            <p class="text-[clamp(1rem,2vw,1.25rem)] text-white/90 max-w-2xl mx-auto mb-8">
                 从开业庆典到大型演唱会，我们提供一站式活动策划与执行服务，为您打造难忘的精彩时刻
             </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#services" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg transition-colors w-full sm:w-auto">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a href="#services" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg transition-colors w-full sm:w-auto text-sm">
                     了解服务
                 </a>
-                <a href="#contact" class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 px-8 py-3 rounded-lg transition-colors w-full sm:w-auto">
+                <a href="#contact" class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 px-6 py-3 rounded-lg transition-colors w-full sm:w-auto text-sm">
                     立即咨询
                 </a>
             </div>
@@ -184,21 +184,21 @@
     <!-- 服务内容 -->
     <section id="services" class="section-padding bg-white">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">服务内容</h2>
+            <div class="text-center mb-12">
+                <h2 class="text-[clamp(1.5rem,3vw,2.25rem)] font-bold text-dark mb-4">服务内容</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">我们提供全方位的活动策划与执行服务，满足您的各种需求</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- 庆典仪式类 -->
                 <div class="bg-light rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 overflow-hidden">
+                    <div class="h-40 overflow-hidden">
                         <img src="首映.JPG" alt="庆典仪式服务" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-dark mb-3">庆典仪式类</h3>
-                        <p class="text-gray-600 mb-4">提供开业庆典、周年庆典、奠基仪式、封顶仪式等各类庆典活动的策划与执行服务。</p>
-                        <a href="#" class="text-primary font-medium flex items-center hover:text-primary/80 transition-colors">
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-dark mb-2">庆典仪式类</h3>
+                        <p class="text-gray-600 mb-3 text-sm">提供开业庆典、周年庆典、奠基仪式、封顶仪式等各类庆典活动的策划与执行服务。</p>
+                        <a href="#" class="text-primary font-medium flex items-center hover:text-primary/80 transition-colors text-sm">
                             了解详情 <i class="fa fa-arrow-right ml-2"></i>
                         </a>
                     </div>
@@ -206,13 +206,13 @@
                 
                 <!-- 会议会展类 -->
                 <div class="bg-light rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 overflow-hidden">
+                    <div class="h-40 overflow-hidden">
                         <img src="会展.JPG" alt="会议会展服务" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-dark mb-3">会议会展类</h3>
-                        <p class="text-gray-600 mb-4">提供企业年会、产品发布会、商务会议、展览展示等活动的策划与组织服务。</p>
-                        <a href="#" class="text-primary font-medium flex items-center hover:text-primary/80 transition-colors">
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-dark mb-2">会议会展类</h3>
+                        <p class="text-gray-600 mb-3 text-sm">提供企业年会、产品发布会、商务会议、展览展示等活动的策划与组织服务。</p>
+                        <a href="#" class="text-primary font-medium flex items-center hover:text-primary/80 transition-colors text-sm">
                             了解详情 <i class="fa fa-arrow-right ml-2"></i>
                         </a>
                     </div>
@@ -220,13 +220,13 @@
                 
                 <!-- 文艺演出类 -->
                 <div class="bg-light rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 overflow-hidden">
+                    <div class="h-40 overflow-hidden">
                         <img src="灯光音箱.JPG" alt="文艺演出服务" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-dark mb-3">文艺演出类</h3>
-                        <p class="text-gray-600 mb-4">提供演唱会、音乐会、文艺晚会、主题晚会等演出活动的策划与执行服务。</p>
-                        <a href="#" class="text-primary font-medium flex items-center hover:text-primary/80 transition-colors">
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-dark mb-2">文艺演出类</h3>
+                        <p class="text-gray-600 mb-3 text-sm">提供演唱会、音乐会、文艺晚会、主题晚会等演出活动的策划与执行服务。</p>
+                        <a href="#" class="text-primary font-medium flex items-center hover:text-primary/80 transition-colors text-sm">
                             了解详情 <i class="fa fa-arrow-right ml-2"></i>
                         </a>
                     </div>
@@ -238,82 +238,83 @@
     <!-- 业务范围 -->
     <section id="business" class="section-padding bg-light">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">业务范围</h2>
+            <div class="text-center mb-12">
+                <h2 class="text-[clamp(1.5rem,3vw,2.25rem)] font-bold text-dark mb-4">业务范围</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">我们的业务覆盖各类庆典活动，为您提供全方位的解决方案</p>
             </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 业务项目 1-8 保持不变 -->
                 <!-- 业务项目 1 -->
-                <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fa fa-building text-primary text-2xl"></i>
+                <div class="bg-white rounded-xl shadow-md p-5 text-center card-hover">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-building text-primary text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-dark mb-3">开业庆典</h3>
-                    <p class="text-gray-600">专业策划各类企业开业庆典活动，打造隆重而难忘的开业仪式。</p>
+                    <h3 class="text-lg font-bold text-dark mb-2">开业庆典</h3>
+                    <p class="text-gray-600 text-sm">专业策划各类企业开业庆典活动，打造隆重而难忘的开业仪式。</p>
                 </div>
                 
                 <!-- 业务项目 2 -->
-                <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fa fa-calendar text-primary text-2xl"></i>
+                <div class="bg-white rounded-xl shadow-md p-5 text-center card-hover">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-calendar text-primary text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-dark mb-3">周年庆典</h3>
-                    <p class="text-gray-600">为企业定制各类周年庆典活动，回顾发展历程，展望美好未来。</p>
+                    <h3 class="text-lg font-bold text-dark mb-2">周年庆典</h3>
+                    <p class="text-gray-600 text-sm">为企业定制各类周年庆典活动，回顾发展历程，展望美好未来。</p>
                 </div>
                 
                 <!-- 业务项目 3 -->
-                <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fa fa-microphone text-primary text-2xl"></i>
+                <div class="bg-white rounded-xl shadow-md p-5 text-center card-hover">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-microphone text-primary text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-dark mb-3">产品发布</h3>
-                    <p class="text-gray-600">专业策划各类产品发布会，突出产品特点，提升品牌影响力。</p>
+                    <h3 class="text-lg font-bold text-dark mb-2">产品发布</h3>
+                    <p class="text-gray-600 text-sm">专业策划各类产品发布会，突出产品特点，提升品牌影响力。</p>
                 </div>
                 
                 <!-- 业务项目 4 -->
-                <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fa fa-users text-primary text-2xl"></i>
+                <div class="bg-white rounded-xl shadow-md p-5 text-center card-hover">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-users text-primary text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-dark mb-3">企业年会</h3>
-                    <p class="text-gray-600">为企业打造精彩的年会活动，增强团队凝聚力，表彰优秀员工。</p>
+                    <h3 class="text-lg font-bold text-dark mb-2">企业年会</h3>
+                    <p class="text-gray-600 text-sm">为企业打造精彩的年会活动，增强团队凝聚力，表彰优秀员工。</p>
                 </div>
                 
                 <!-- 业务项目 5 -->
-                <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fa fa-music text-primary text-2xl"></i>
+                <div class="bg-white rounded-xl shadow-md p-5 text-center card-hover">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-music text-primary text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-dark mb-3">文艺晚会</h3>
-                    <p class="text-gray-600">策划各类文艺晚会，提供节目编排、舞台设计、演员调度等服务。</p>
+                    <h3 class="text-lg font-bold text-dark mb-2">文艺晚会</h3>
+                    <p class="text-gray-600 text-sm">策划各类文艺晚会，提供节目编排、舞台设计、演员调度等服务。</p>
                 </div>
                 
                 <!-- 业务项目 6 -->
-                <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fa fa-university text-primary text-2xl"></i>
+                <div class="bg-white rounded-xl shadow-md p-5 text-center card-hover">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-university text-primary text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-dark mb-3">商务会议</h3>
-                    <p class="text-gray-600">提供商务会议的场地布置、设备租赁、会议服务等一站式解决方案。</p>
+                    <h3 class="text-lg font-bold text-dark mb-2">商务会议</h3>
+                    <p class="text-gray-600 text-sm">提供商务会议的场地布置、设备租赁、会议服务等一站式解决方案。</p>
                 </div>
                 
                 <!-- 业务项目 7 -->
-                <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fa fa-glass text-primary text-2xl"></i>
+                <div class="bg-white rounded-xl shadow-md p-5 text-center card-hover">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-glass text-primary text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-dark mb-3">酒会宴会</h3>
-                    <p class="text-gray-600">策划各类酒会、宴会活动，提供餐饮服务、场地布置、节目安排等。</p>
+                    <h3 class="text-lg font-bold text-dark mb-2">酒会宴会</h3>
+                    <p class="text-gray-600 text-sm">策划各类酒会、宴会活动，提供餐饮服务、场地布置、节目安排等。</p>
                 </div>
                 
                 <!-- 业务项目 8 -->
-                <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fa fa-flag text-primary text-2xl"></i>
+                <div class="bg-white rounded-xl shadow-md p-5 text-center card-hover">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-flag text-primary text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-dark mb-3">奠基仪式</h3>
-                    <p class="text-gray-600">专业策划各类工程奠基仪式，提供仪式流程设计、物料准备等服务。</p>
+                    <h3 class="text-lg font-bold text-dark mb-2">奠基仪式</h3>
+                    <p class="text-gray-600 text-sm">专业策划各类工程奠基仪式，提供仪式流程设计、物料准备等服务。</p>
                 </div>
             </div>
         </div>
@@ -322,23 +323,24 @@
     <!-- 租赁产品 -->
     <section id="products" class="section-padding bg-white">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">租赁产品</h2>
+            <div class="text-center mb-12">
+                <h2 class="text-[clamp(1.5rem,3vw,2.25rem)] font-bold text-dark mb-4">租赁产品</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">我们提供高品质的活动设备租赁服务，满足您的各种需求</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 租赁产品 1-6 保持不变，调整部分尺寸和字体 -->
                 <!-- 租赁产品 1 -->
                 <div class="bg-light rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 overflow-hidden">
+                    <div class="h-40 overflow-hidden">
                         <img src="灯光音箱.JPG" alt="灯光音响设备" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-dark mb-3">灯光音响设备</h3>
-                        <p class="text-gray-600 mb-4">提供专业灯光、音响、舞台设备租赁，满足各类活动需求。</p>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-dark mb-2">灯光音响设备</h3>
+                        <p class="text-gray-600 mb-3 text-sm">提供专业灯光、音响、舞台设备租赁，满足各类活动需求。</p>
                         <div class="flex items-center justify-between">
-                            <span class="text-primary font-bold">价格面议</span>
-                            <a href="#" class="text-primary font-medium hover:text-primary/80 transition-colors">
+                            <span class="text-primary font-bold text-sm">价格面议</span>
+                            <a href="#" class="text-primary font-medium hover:text-primary/80 transition-colors text-sm">
                                 查看详情
                             </a>
                         </div>
@@ -347,15 +349,15 @@
                 
                 <!-- 租赁产品 2 -->
                 <div class="bg-light rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 overflow-hidden">
+                    <div class="h-40 overflow-hidden">
                         <img src="行架.JPG" alt="舞台背景设备" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-dark mb-3">舞台背景设备</h3>
-                        <p class="text-gray-600 mb-4">提供各类舞台搭建、背景布置、特效设备租赁服务。</p>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-dark mb-2">舞台背景设备</h3>
+                        <p class="text-gray-600 mb-3 text-sm">提供各类舞台搭建、背景布置、特效设备租赁服务。</p>
                         <div class="flex items-center justify-between">
-                            <span class="text-primary font-bold">价格面议</span>
-                            <a href="#" class="text-primary font-medium hover:text-primary/80 transition-colors">
+                            <span class="text-primary font-bold text-sm">价格面议</span>
+                            <a href="#" class="text-primary font-medium hover:text-primary/80 transition-colors text-sm">
                                 查看详情
                             </a>
                         </div>
@@ -364,15 +366,15 @@
                 
                 <!-- 租赁产品 3 -->
                 <div class="bg-light rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 overflow-hidden">
+                    <div class="h-40 overflow-hidden">
                         <img src="龙门.JPG" alt="充气拱门设备" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-dark mb-3">充气拱门设备</h3>
-                        <p class="text-gray-600 mb-4">提供各种规格的充气拱门、灯笼柱、空中舞星等庆典用品。</p>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-dark mb-2">充气拱门设备</h3>
+                        <p class="text-gray-600 mb-3 text-sm">提供各种规格的充气拱门、灯笼柱、空中舞星等庆典用品。</p>
                         <div class="flex items-center justify-between">
-                            <span class="text-primary font-bold">价格面议</span>
-                            <a href="#" class="text-primary font-medium hover:text-primary/80 transition-colors">
+                            <span class="text-primary font-bold text-sm">价格面议</span>
+                            <a href="#" class="text-primary font-medium hover:text-primary/80 transition-colors text-sm">
                                 查看详情
                             </a>
                         </div>
@@ -381,15 +383,15 @@
                 
                 <!-- 租赁产品 4 -->
                 <div class="bg-light rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 overflow-hidden">
-                        <img src="桌椅.JPG" alt="桌椅沙发设备" class="w-full h-full object-cover">
+                    <div class="h-40 overflow-hidden">
+                        <img src="桌椅.jPG" alt="桌椅沙发设备" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-dark mb-3">桌椅沙发设备</h3>
-                        <p class="text-gray-600 mb-4">提供各类高档宴会桌椅、沙发、地毯等场地布置用品租赁。</p>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-dark mb-2">桌椅沙发设备</h3>
+                        <p class="text-gray-600 mb-3 text-sm">提供各类高档宴会桌椅、沙发、地毯等场地布置用品租赁。</p>
                         <div class="flex items-center justify-between">
-                            <span class="text-primary font-bold">价格面议</span>
-                            <a href="#" class="text-primary font-medium hover:text-primary/80 transition-colors">
+                            <span class="text-primary font-bold text-sm">价格面议</span>
+                            <a href="#" class="text-primary font-medium hover:text-primary/80 transition-colors text-sm">
                                 查看详情
                             </a>
                         </div>
@@ -398,15 +400,15 @@
                 
                 <!-- 租赁产品 5 -->
                 <div class="bg-light rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 overflow-hidden">
+                    <div class="h-40 overflow-hidden">
                         <img src="充气水池.JPG" alt="庆典道具设备" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-dark mb-3">庆典道具设备</h3>
-                        <p class="text-gray-600 mb-4">提供剪彩道具、冷焰火、礼炮、气球等各类庆典用品。</p>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-dark mb-2">庆典道具设备</h3>
+                        <p class="text-gray-600 mb-3 text-sm">提供剪彩道具、冷焰火、礼炮、气球等各类庆典用品。</p>
                         <div class="flex items-center justify-between">
-                            <span class="text-primary font-bold">价格面议</span>
-                            <a href="#" class="text-primary font-medium hover:text-primary/80 transition-colors">
+                            <span class="text-primary font-bold text-sm">价格面议</span>
+                            <a href="#" class="text-primary font-medium hover:text-primary/80 transition-colors text-sm">
                                 查看详情
                             </a>
                         </div>
@@ -415,15 +417,15 @@
                 
                 <!-- 租赁产品 6 -->
                 <div class="bg-light rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 overflow-hidden">
+                    <div class="h-40 overflow-hidden">
                         <img src="场地布置.JPG" alt="投影显示设备" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-dark mb-3">投影显示设备</h3>
-                        <p class="text-gray-600 mb-4">提供投影仪、LED屏幕、液晶电视等各类显示设备租赁。</p>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-dark mb-2">投影显示设备</h3>
+                        <p class="text-gray-600 mb-3 text-sm">提供投影仪、LED屏幕、液晶电视等各类显示设备租赁。</p>
                         <div class="flex items-center justify-between">
-                            <span class="text-primary font-bold">价格面议</span>
-                            <a href="#" class="text-primary font-medium hover:text-primary/80 transition-colors">
+                            <span class="text-primary font-bold text-sm">价格面议</span>
+                            <a href="#" class="text-primary font-medium hover:text-primary/80 transition-colors text-sm">
                                 查看详情
                             </a>
                         </div>
@@ -436,67 +438,67 @@
     <!-- 企业文化 -->
     <section id="culture" class="section-padding bg-light">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">企业文化</h2>
+            <div class="text-center mb-12">
+                <h2 class="text-[clamp(1.5rem,3vw,2.25rem)] font-bold text-dark mb-4">企业文化</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">我们秉承专业、创新、服务的理念，为客户创造价值</p>
             </div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 <div>
                     <img src="企业文化.JPG" alt="企业文化" class="w-full h-auto rounded-xl shadow-lg">
                 </div>
                 
                 <div>
-                    <div class="mb-8">
-                        <h3 class="text-2xl font-bold text-dark mb-4">我们的使命</h3>
-                        <p class="text-gray-600">为客户创造精彩难忘的活动体验，助力企业品牌提升和业务发展。</p>
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold text-dark mb-3">我们的使命</h3>
+                        <p class="text-gray-600 text-sm">为客户创造精彩难忘的活动体验，助力企业品牌提升和业务发展。</p>
                     </div>
                     
-                    <div class="mb-8">
-                        <h3 class="text-2xl font-bold text-dark mb-4">我们的愿景</h3>
-                        <p class="text-gray-600">成为国内领先的活动策划与执行服务商，打造庆典活动第一品牌。</p>
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold text-dark mb-3">我们的愿景</h3>
+                        <p class="text-gray-600 text-sm">成为国内领先的活动策划与执行服务商，打造庆典活动第一品牌。</p>
                     </div>
                     
-                    <div class="mb-8">
-                        <h3 class="text-2xl font-bold text-dark mb-4">我们的价值观</h3>
-                        <ul class="space-y-3">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold text-dark mb-3">我们的价值观</h3>
+                        <ul class="space-y-2">
                             <li class="flex items-start">
-                                <i class="fa fa-check-circle text-primary mt-1 mr-3"></i>
-                                <span>专业专注：以专业的团队和丰富的经验，为客户提供高品质服务</span>
+                                <i class="fa fa-check-circle text-primary mt-1 mr-2"></i>
+                                <span class="text-sm">专业专注：以专业的团队和丰富的经验，为客户提供高品质服务</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fa fa-check-circle text-primary mt-1 mr-3"></i>
-                                <span>创新突破：不断追求创新，为客户打造独特的活动体验</span>
+                                <i class="fa fa-check-circle text-primary mt-1 mr-2"></i>
+                                <span class="text-sm">创新突破：不断追求创新，为客户打造独特的活动体验</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fa fa-check-circle text-primary mt-1 mr-3"></i>
-                                <span>诚信服务：坚持诚信为本，以客户需求为中心，提供优质服务</span>
+                                <i class="fa fa-check-circle text-primary mt-1 mr-2"></i>
+                                <span class="text-sm">诚信服务：坚持诚信为本，以客户需求为中心，提供优质服务</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fa fa-check-circle text-primary mt-1 mr-3"></i>
-                                <span>团队合作：注重团队协作，发挥集体智慧，共同实现目标</span>
+                                <i class="fa fa-check-circle text-primary mt-1 mr-2"></i>
+                                <span class="text-sm">团队合作：注重团队协作，发挥集体智慧，共同实现目标</span>
                             </li>
                         </ul>
                     </div>
                     
                     <div>
-                        <h3 class="text-2xl font-bold text-dark mb-4">我们的优势</h3>
-                        <ul class="space-y-3">
+                        <h3 class="text-xl font-bold text-dark mb-3">我们的优势</h3>
+                        <ul class="space-y-2">
                             <li class="flex items-start">
-                                <i class="fa fa-star text-primary mt-1 mr-3"></i>
-                                <span>丰富经验：多年活动策划执行经验，成功案例众多</span>
+                                <i class="fa fa-star text-primary mt-1 mr-2"></i>
+                                <span class="text-sm">丰富经验：多年活动策划执行经验，成功案例众多</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fa fa-star text-primary mt-1 mr-3"></i>
-                                <span>专业团队：拥有专业的策划、设计、执行团队</span>
+                                <i class="fa fa-star text-primary mt-1 mr-2"></i>
+                                <span class="text-sm">专业团队：拥有专业的策划、设计、执行团队</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fa fa-star text-primary mt-1 mr-3"></i>
-                                <span>优质资源：与众多供应商建立长期合作关系，资源丰富</span>
+                                <i class="fa fa-star text-primary mt-1 mr-2"></i>
+                                <span class="text-sm">优质资源：与众多供应商建立长期合作关系，资源丰富</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fa fa-star text-primary mt-1 mr-3"></i>
-                                <span>全程服务：提供从策划到执行的一站式服务，省心省力</span>
+                                <i class="fa fa-star text-primary mt-1 mr-2"></i>
+                                <span class="text-sm">全程服务：提供从策划到执行的一站式服务，省心省力</span>
                             </li>
                         </ul>
                     </div>
@@ -508,109 +510,87 @@
     <!-- 服务流程 -->
     <section id="process" class="section-padding bg-white">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">服务流程</h2>
+            <div class="text-center mb-12">
+                <h2 class="text-[clamp(1.5rem,3vw,2.25rem)] font-bold text-dark mb-4">服务流程</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">我们拥有一套完善的服务流程，确保为您提供高效、专业的服务</p>
             </div>
             
-            <div class="relative">
-                <!-- 流程线 -->
-                <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary/20 top-8"></div>
-                
-                <div class="space-y-12 relative">
-                    <!-- 流程步骤 1 -->
-                    <div class="flex flex-col md:flex-row items-center">
-                        <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0 md:text-right">
-                            <h3 class="text-xl font-bold text-dark mb-3">需求沟通</h3>
-                            <p class="text-gray-600">与客户深入沟通，了解活动目的、预算、时间等需求，制定初步方案。</p>
-                        </div>
-                        
-                        <div class="z-10 bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold">
+            <div class="space-y-8">
+                <!-- 流程步骤 1-6 -->
+                <!-- 流程步骤 1 -->
+                <div class="bg-light rounded-xl p-6 shadow-md">
+                    <div class="flex items-center">
+                        <div class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mr-4 flex-shrink-0">
                             1
                         </div>
-                        
-                        <div class="md:w-1/2 md:pl-12 mt-8 md:mt-0">
-                           <!--  <img src="" alt="需求沟通" class="w-full h-auto rounded-lg shadow-md">-->
+                        <div>
+                            <h3 class="text-lg font-bold text-dark mb-2">需求沟通</h3>
+                            <p class="text-gray-600 text-sm">与客户深入沟通，了解活动目的、预算、时间等需求，制定初步方案。</p>
                         </div>
                     </div>
-                    
-                    <!-- 流程步骤 2 -->
-                    <div class="flex flex-col md:flex-row items-center">
-                        <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0 order-1 md:order-2">
-                          <!--img src="" alt="方案策划" class="w-full h-auto rounded-lg shadow-md">-->
-                        </div>
-                        
-                        <div class="z-10 bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold order-2">
+                </div>
+                
+                <!-- 流程步骤 2 -->
+                <div class="bg-light rounded-xl p-6 shadow-md">
+                    <div class="flex items-center">
+                        <div class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mr-4 flex-shrink-0">
                             2
                         </div>
-                        
-                        <div class="md:w-1/2 md:pl-12 mt-8 md:mt-0 order-3">
-                            <h3 class="text-xl font-bold text-dark mb-3">方案策划</h3>
-                            <p class="text-gray-600">根据客户需求，制定详细的活动策划方案，包括流程、预算、场地布置等。</p>
+                        <div>
+                            <h3 class="text-lg font-bold text-dark mb-2">方案策划</h3>
+                            <p class="text-gray-600 text-sm">根据客户需求，制定详细的活动策划方案，包括流程、预算、场地布置等。</p>
                         </div>
                     </div>
-                    
-                    <!-- 流程步骤 3 -->
-                    <div class="flex flex-col md:flex-row items-center">
-                        <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0 md:text-right">
-                            <h3 class="text-xl font-bold text-dark mb-3">方案确认</h3>
-                            <p class="text-gray-600">与客户沟通并确认方案细节，根据反馈进行修改和完善，直至客户满意。</p>
-                        </div>
-                        
-                        <div class="z-10 bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold">
+                </div>
+                
+                <!-- 流程步骤 3 -->
+                <div class="bg-light rounded-xl p-6 shadow-md">
+                    <div class="flex items-center">
+                        <div class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mr-4 flex-shrink-0">
                             3
                         </div>
-                        
-                        <div class="md:w-1/2 md:pl-12 mt-8 md:mt-0">
-                         <!--   <img src="" alt="方案确认" class="w-full h-auto rounded-lg shadow-md">-->
+                        <div>
+                            <h3 class="text-lg font-bold text-dark mb-2">方案确认</h3>
+                            <p class="text-gray-600 text-sm">与客户沟通并确认方案细节，根据反馈进行修改和完善，直至客户满意。</p>
                         </div>
                     </div>
-                    
-                    <!-- 流程步骤 4 -->
-                    <div class="flex flex-col md:flex-row items-center">
-                        <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0 order-1 md:order-2">
-                            <!--<img src="" alt="执行准备" class="w-full h-auto rounded-lg shadow-md">-->
-                        </div>
-                        
-                        <div class="z-10 bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold order-2">
+                </div>
+                
+                <!-- 流程步骤 4 -->
+                <div class="bg-light rounded-xl p-6 shadow-md">
+                    <div class="flex items-center">
+                        <div class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mr-4 flex-shrink-0">
                             4
                         </div>
-                        
-                        <div class="md:w-1/2 md:pl-12 mt-8 md:mt-0 order-3">
-                            <h3 class="text-xl font-bold text-dark mb-3">执行准备</h3>
-                            <p class="text-gray-600">根据确认的方案，进行场地布置、设备租赁、人员安排等各项准备工作。</p>
+                        <div>
+                            <h3 class="text-lg font-bold text-dark mb-2">执行准备</h3>
+                            <p class="text-gray-600 text-sm">根据确认的方案，进行场地布置、设备租赁、人员安排等各项准备工作。</p>
                         </div>
                     </div>
-                    
-                    <!-- 流程步骤 5 -->
-                    <div class="flex flex-col md:flex-row items-center">
-                        <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0 md:text-right">
-                            <h3 class="text-xl font-bold text-dark mb-3">活动执行</h3>
-                            <p class="text-gray-600">按照计划进行活动执行，全程跟踪并及时处理突发情况，确保活动顺利进行。</p>
-                        </div>
-                        
-                        <div class="z-10 bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold">
+                </div>
+                
+                <!-- 流程步骤 5 -->
+                <div class="bg-light rounded-xl p-6 shadow-md">
+                    <div class="flex items-center">
+                        <div class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mr-4 flex-shrink-0">
                             5
                         </div>
-                        
-                        <div class="md:w-1/2 md:pl-12 mt-8 md:mt-0">
-                            <!--   <img src="" alt="活动执行" class="w-full h-auto rounded-lg shadow-md">-->
+                        <div>
+                            <h3 class="text-lg font-bold text-dark mb-2">活动执行</h3>
+                            <p class="text-gray-600 text-sm">按照计划进行活动执行，全程跟踪并及时处理突发情况，确保活动顺利进行。</p>
                         </div>
                     </div>
-                    
-                    <!-- 流程步骤 6 -->
-                    <div class="flex flex-col md:flex-row items-center">
-                        <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0 order-1 md:order-2">
-                          <!--   <img src="" alt="后续服务" class="w-full h-auto rounded-lg shadow-md">-->
-                        </div>
-                        
-                        <div class="z-10 bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold order-2">
+                </div>
+                
+                <!-- 流程步骤 6 -->
+                <div class="bg-light rounded-xl p-6 shadow-md">
+                    <div class="flex items-center">
+                        <div class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mr-4 flex-shrink-0">
                             6
                         </div>
-                        
-                        <div class="md:w-1/2 md:pl-12 mt-8 md:mt-0 order-3">
-                            <h3 class="text-xl font-bold text-dark mb-3">后续服务</h3>
-                            <p class="text-gray-600">活动结束后，进行后续跟进和反馈收集，为客户提供活动总结和相关资料。</p>
+                        <div>
+                            <h3 class="text-lg font-bold text-dark mb-2">后续服务</h3>
+                            <p class="text-gray-600 text-sm">活动结束后，进行后续跟进和反馈收集，为客户提供活动总结和相关资料。</p>
                         </div>
                     </div>
                 </div>
@@ -621,99 +601,92 @@
     <!-- 联系我们 -->
     <section id="contact" class="section-padding bg-light">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">联系我们</h2>
+            <div class="text-center mb-12">
+                <h2 class="text-[clamp(1.5rem,3vw,2.25rem)] font-bold text-dark mb-4">联系我们</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">无论您有任何问题或需求，我们都随时为您提供帮助</p>
             </div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div>
-                    <div class="bg-white rounded-xl shadow-lg p-8 h-full">
-                        <h3 class="text-xl font-bold text-dark mb-6">联系方式</h3>
+                    <div class="bg-white rounded-xl shadow-lg p-6 h-full">
+                        <h3 class="text-xl font-bold text-dark mb-5">联系方式</h3>
                         
-                        <div class="space-y-6">
+                        <div class="space-y-5">
                             <div class="flex items-start">
-                                <div class="bg-primary/10 p-3 rounded-lg mr-4">
-                                    <i class="fa fa-map-marker text-primary text-xl"></i>
+                                <div class="bg-primary/10 p-2 rounded-lg mr-3">
+                                    <i class="fa fa-map-marker text-primary text-lg"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-medium text-dark mb-1">公司地址</h4>
-                                    <p class="text-gray-600">河北省邯郸市丛台区</p>
+                                    <h4 class="font-medium text-dark mb-1 text-sm">公司地址</h4>
+                                    <p class="text-gray-600 text-sm">河北省邯郸市丛台区</p>
                                 </div>
                             </div>
                             
                             <div class="flex items-start">
-                                <div class="bg-primary/10 p-3 rounded-lg mr-4">
-                                    <i class="fa fa-phone text-primary text-xl"></i>
+                                <div class="bg-primary/10 p-2 rounded-lg mr-3">
+                                    <i class="fa fa-phone text-primary text-lg"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-medium text-dark mb-1">联系电话</h4>
-                                    <p class="text-gray-600">0310-8268868</p>
+                                    <h4 class="font-medium text-dark mb-1 text-sm">联系电话</h4>
+                                    <p class="text-gray-600 text-sm">0310-8268868</p>
                                 </div>
                             </div>
                             
                             <div class="flex items-start">
-                                <div class="bg-primary/10 p-3 rounded-lg mr-4">
-                                    <i class="fa fa-weixin text-primary text-xl"></i>
+                                <div class="bg-primary/10 p-2 rounded-lg mr-3">
+                                    <i class="fa fa-weixin text-primary text-lg"></i>
                                 </div>
                                 <div class="flex-1">
-                                    <h4 class="font-medium text-dark mb-1">微信号</h4>
-			<div class="md:w-1/2 md:pr-12 mb-8 md:mb-0 order-1 md:order-2">
-                        <img src="微信二维码.png" alt="方案策划" class="w-full h-auto rounded-lg shadow-md">
-                        </div>
-
-                                    <p class="text-gray-600">yuanyanbo</p>
-
-                                    <a href="javascript:void(0)" id="copy-wechat" class="text-primary text-sm hover:underline mt-1 inline-block">
+                                    <h4 class="font-medium text-dark mb-1 text-sm">微信号</h4>
+                                    <div class="md:w-1/2 md:pr-12 mb-4 md:mb-0 order-1 md:order-2">
+                                        <img src="微信二维码.png" alt="微信二维码" class="w-full h-auto rounded-lg shadow-md">
+                                    </div>
+                                    <p class="text-gray-600 text-sm">yuanyanbo</p>
+                                    <a href="javascript:void(0)" id="copy-wechat" class="text-primary text-xs hover:underline mt-1 inline-block">
                                         <i class="fa fa-copy mr-1"></i>扫码加微信
                                     </a>
-                                    <p id="copy-success" class="text-green-500 text-sm mt-1 hidden">已复制！</p>
+                                    <p id="copy-success" class="text-green-500 text-xs mt-1 hidden">已复制！</p>
                                 </div>
                             </div>
                             
                             <div class="flex items-start">
-                                <div class="bg-primary/10 p-3 rounded-lg mr-4">
-                                    <i class="fa fa-mobile text-primary text-xl"></i>
+                                <div class="bg-primary/10 p-2 rounded-lg mr-3">
+                                    <i class="fa fa-mobile text-primary text-lg"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-medium text-dark mb-1">手机号码</h4>
-                                    <p class="text-gray-600">18231003133</p>
+                                    <h4 class="font-medium text-dark mb-1 text-sm">手机号码</h4>
+                                    <p class="text-gray-600 text-sm">18231003133</p>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="mt-10">
-                            
-                           
                         </div>
                     </div>
                 </div>
                 
                 <!-- 在线聊天窗口 -->
-                <div class="bg-white rounded-xl shadow-lg p-8 h-full">
-                    <h3 class="text-xl font-bold text-dark mb-6">在线留言</h3>
+                <div class="bg-white rounded-xl shadow-lg p-6 h-full">
+                    <h3 class="text-xl font-bold text-dark mb-5">在线留言</h3>
                     
-                    <div id="chat-container" class="flex flex-col h-[400px] border border-gray-200 rounded-lg overflow-hidden">
+                    <div id="chat-container" class="flex flex-col h-[350px] border border-gray-200 rounded-lg overflow-hidden">
                         <!-- 聊天消息区域 -->
-                        <div id="chat-messages" class="flex-1 p-4 overflow-y-auto bg-chat-light">
+                        <div id="chat-messages" class="flex-1 p-3 overflow-y-auto bg-chat-light">
                             <!-- 欢迎消息 -->
-                            <div class="flex items-end justify-start mb-4">
+                            <div class="flex items-end justify-start mb-3">
                                 <div class="flex items-center mb-1">
-                                    <img src="https://picsum.photos/id/237/40/40" alt="客服头像" class="w-8 h-8 rounded-full mr-2">
-                                    <span class="font-medium text-dark">客服小庆</span>
+                                    <img src="https://picsum.photos/id/237/32/32" alt="客服头像" class="w-6 h-6 rounded-full mr-1">
+                                    <span class="font-medium text-dark text-xs">客服小庆</span>
                                 </div>
-                                <div class="bg-chat-secondary text-chat-dark rounded-tl-xl rounded-tr-xl rounded-br-xl p-4 inline-block max-w-[80%]">
+                                <div class="bg-chat-secondary text-chat-dark rounded-tl-xl rounded-tr-xl rounded-br-xl p-3 inline-block max-w-[80%] text-sm">
                                     <p>您好！欢迎咨询庆典活动策划服务，您在此留言我可以实时收到。</p>
                                     <p class="text-xs text-gray-500 mt-1">刚刚</p>
                                 </div>
                             </div>
                             
-                            <div class="flex items-end justify-start mb-4">
+                            <div class="flex items-end justify-start mb-3">
                                 <div class="flex items-center mb-1">
-                                    <img src="https://picsum.photos/id/237/40/40" alt="客服头像" class="w-8 h-8 rounded-full mr-2">
-                                    <span class="font-medium text-dark">客服小庆</span>
+                                    <img src="https://picsum.photos/id/237/32/32" alt="客服头像" class="w-6 h-6 rounded-full mr-1">
+                                    <span class="font-medium text-dark text-xs">客服小庆</span>
                                 </div>
-                                <div class="bg-chat-secondary text-chat-dark rounded-tl-xl rounded-tr-xl rounded-br-xl p-4 inline-block max-w-[80%]">
+                                <div class="bg-chat-secondary text-chat-dark rounded-tl-xl rounded-tr-xl rounded-br-xl p-3 inline-block max-w-[80%] text-sm">
                                     <p>为了更及时地为您提供服务，您可以直接添加我的微信：<span class="font-bold">yuanyanbo</span>，我们可以在微信上详细沟通您的需求。</p>
                                     <p class="text-xs text-gray-500 mt-1">刚刚</p>
                                 </div>
@@ -721,10 +694,10 @@
                         </div>
                         
                         <!-- 输入区域 -->
-                        <div class="p-4 border-t border-gray-200 bg-white">
+                        <div class="p-3 border-t border-gray-200 bg-white">
                             <div class="flex">
-                                <input type="text" id="chat-input" placeholder="请留下你的微信或者联系方式" class="flex-1 px-4 py-2 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50">
-                                <button id="send-message" class="bg-primary text-white px-6 py-2 rounded-r-lg hover:bg-primary/90 transition-colors">
+                                <input type="text" id="chat-input" placeholder="请留下你的微信或者联系方式" class="flex-1 px-3 py-2 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm">
+                                <button id="send-message" class="bg-primary text-white px-4 py-2 rounded-r-lg hover:bg-primary/90 transition-colors text-sm">
                                     发送
                                 </button>
                             </div>
@@ -736,82 +709,80 @@
     </section>
 
     <!-- 页脚 -->
-    <footer class="bg-dark text-white py-12">
+    <footer class="bg-dark text-white py-10">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div>
-                    <div class="flex items-center space-x-2 mb-6">
-                        <div class="bg-white text-primary p-2 rounded-lg">
-                            <i class="fa fa-star-o text-xl"></i>
+                    <div class="flex items-center space-x-2 mb-5">
+                        <div class="bg-white text-primary p-1 rounded-lg">
+                            <i class="fa fa-star-o text-lg"></i>
                         </div>
-                        <span class="text-xl font-bold text-white">庆典活动策划</span>
+                        <span class="text-lg font-bold text-white">庆典活动策划</span>
                     </div>
-                    <p class="text-gray-400 mb-6">专业的庆典活动策划与执行服务商，为您打造难忘的精彩时刻。</p>
-                    <div class="flex space-x-4">
+                    <p class="text-gray-400 mb-5 text-sm">专业的庆典活动策划与执行服务商，为您打造难忘的精彩时刻。</p>
+                    <div class="flex space-x-3">
                         <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fa fa-weixin text-xl">18231003133           </i>
+                            <i class="fa fa-weixin text-lg">18231003133</i>
                         </a>
-                                  
                     </div>
                 </div>
                 
                 <div>
-                    <h4 class="text-lg font-bold mb-6">服务项目</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">开业庆典</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">周年庆典</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">产品发布</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">企业年会</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">文艺晚会</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">商务会议</a></li>
+                    <h4 class="text-lg font-bold mb-4">服务项目</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">开业庆典</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">周年庆典</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">产品发布</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">企业年会</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">文艺晚会</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">商务会议</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="text-lg font-bold mb-6">关于我们</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">公司简介</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">企业文化</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">服务流程</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">成功案例</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">团队介绍</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">联系我们</a></li>
+                    <h4 class="text-lg font-bold mb-4">关于我们</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">公司简介</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">企业文化</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">服务流程</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">成功案例</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">团队介绍</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">联系我们</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="text-lg font-bold mb-6">联系方式</h4>
-                    <ul class="space-y-3">
+                    <h4 class="text-lg font-bold mb-4">联系方式</h4>
+                    <ul class="space-y-2">
                         <li class="flex items-start">
-                            <i class="fa fa-map-marker text-primary mt-1 mr-3"></i>
-                            <span class="text-gray-400">河北省邯郸市丛台区</span>
+                            <i class="fa fa-map-marker text-primary mt-1 mr-2"></i>
+                            <span class="text-gray-400 text-sm">河北省邯郸市丛台区</span>
                         </li>
                         
                         <li class="flex items-start">
-                            <i class="fa fa-weixin text-primary mt-1 mr-3"></i>
-                            <span class="text-gray-400">yuanyanbo</span>
+                            <i class="fa fa-weixin text-primary mt-1 mr-2"></i>
+                            <span class="text-gray-400 text-sm">yuanyanbo</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fa fa-mobile text-primary mt-1 mr-3"></i>
-                            <span class="text-gray-400">18231003133</span>
+                            <i class="fa fa-mobile text-primary mt-1 mr-2"></i>
+                            <span class="text-gray-400 text-sm">18231003133</span>
                         </li>
-                        
                     </ul>
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+            <div class="border-t border-gray-800 mt-8 pt-6 text-center text-gray-500 text-sm">
                 <p>© 2025 邯郸庆典活动策划 版权所有 </p>
             </div>
         </div>
     </footer>
 
     <!-- 返回顶部按钮 -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 z-50">
-        <i class="fa fa-angle-up text-xl"></i>
+    <button id="back-to-top" class="fixed bottom-6 right-6 bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 z-50">
+        <i class="fa fa-angle-up text-lg"></i>
     </button>
 
-    <!-- JavaScript -->
+     <!-- JavaScript -->
     <script>
         // 导航栏滚动效果
         window.addEventListener('scroll', function() {
@@ -826,7 +797,7 @@
             
             // 返回顶部按钮显示/隐藏
             const backToTop = document.getElementById('back-to-top');
-            if (window.scrollY > 300) {
+            if (window.scrollY > 30000) {
                 backToTop.classList.remove('opacity-0', 'invisible');
                 backToTop.classList.add('opacity-100', 'visible');
             } else {
@@ -866,7 +837,7 @@
         });
         
         // 返回顶部按钮
-         document.getElementById('back-to-top').addEventListener('click', function() {
+          document.getElementById('back-to-top').addEventListener('click', function() {
               // window.scrollTo({
               //   top: 0,
                 // behavior: 'smooth'
