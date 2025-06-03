@@ -1,12 +1,9 @@
-根据您的需求，我已将微信聊天窗口改为咨询留言表单，包含姓名、电话、微信号和留言字段。同时保留了SCKEY功能，确保您能及时收到客户咨询。以下是修改后的代码：
-
-```html
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>庆典活动策划 - 专业活动服务提供商</title>
+    <title>邯郸庆典活动策划 - 专业活动服务提供商</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script>
@@ -32,6 +29,25 @@
             }
         }
     </script>
+<!-- 悬浮二维码 -->
+<div class="fixed bottom-6 right-6 z-40 transform transition-all duration-300">
+  <div class="group relative">
+    <!-- 二维码触发按钮 -->
+    <div class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center cursor-pointer shadow-lg hover:bg-secondary hover:scale-110 transition-all">
+      <i class="fa fa-qrcode text-2xl"></i>
+    </div>
+    
+    <!-- 二维码展开内容 -->
+    <div class="absolute bottom-full right-0 mt-4 w-60 bg-white rounded-lg shadow-xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
+      <div class="text-center mb-3">
+        <div class="w-full h-48 bg-gray-100 rounded-lg flex items-center justify-center mb-2">
+          <img src="微信二维码.png" alt="扫码加微信" class="w-full h-full object-cover rounded-lg">
+        </div>
+        <p class="text-sm text-gray-600">扫码加微信</p>
+      </div>
+    </div>
+  </div>
+</div>
     <style type="text/tailwindcss">
         @layer utilities {
             .content-auto {
@@ -55,6 +71,15 @@
             .carousel-indicator {
                 transition: all 0.3s ease;
             }
+            .chat-bubble-right {
+                @apply bg-chat-primary text-white rounded-tl-xl rounded-tr-xl rounded-bl-xl p-4 inline-block max-w-[80%];
+            }
+            .chat-bubble-left {
+                @apply bg-chat-secondary text-chat-dark rounded-tl-xl rounded-tr-xl rounded-br-xl p-4 inline-block max-w-[80%];
+            }
+            .chat-timestamp {
+                @apply text-xs text-gray-500 mt-1 ml-2;
+            }
         }
     </style>
 </head>
@@ -63,10 +88,8 @@
     <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm">
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
             <a href="#" class="flex items-center space-x-2">
-                <div class="bg-primary text-white p-2 rounded-lg">
-                    <i class="fa fa-star-o text-xl"></i>
-                </div>
-                <span class="text-xl font-bold text-primary">庆典活动策划</span>
+                
+                <span class="text-xl font-bold text-primary">邯郸庆典活动策划</span>
             </a>
             
             <!-- 桌面导航 -->
@@ -105,7 +128,7 @@
             <div id="hero-carousel" class="relative h-full w-full">
                 <!-- 轮播项 1 -->
                 <div class="carousel-item absolute inset-0 opacity-100">
-                    <img src="场地布置.JPG" alt="庆典活动背景" class="w-full h-full object-cover">
+                    <img src="企业文化.JPG" alt="庆典活动背景" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-dark/50"></div>
                 </div>
                 <!-- 轮播项 2 -->
@@ -170,7 +193,7 @@
                 <!-- 庆典仪式类 -->
                 <div class="bg-light rounded-xl shadow-lg overflow-hidden card-hover">
                     <div class="h-48 overflow-hidden">
-                        <img src="充气水池.JPG" alt="庆典仪式服务" class="w-full h-full object-cover">
+                        <img src="首映.JPG" alt="庆典仪式服务" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-dark mb-3">庆典仪式类</h3>
@@ -198,7 +221,7 @@
                 <!-- 文艺演出类 -->
                 <div class="bg-light rounded-xl shadow-lg overflow-hidden card-hover">
                     <div class="h-48 overflow-hidden">
-                        <img src="首映.JPG" alt="文艺演出服务" class="w-full h-full object-cover">
+                        <img src="灯光音箱.JPG" alt="文艺演出服务" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-dark mb-3">文艺演出类</h3>
@@ -359,7 +382,7 @@
                 <!-- 租赁产品 4 -->
                 <div class="bg-light rounded-xl shadow-lg overflow-hidden card-hover">
                     <div class="h-48 overflow-hidden">
-                        <img src="场地布置.JPG" alt="桌椅沙发设备" class="w-full h-full object-cover">
+                        <img src="桌椅.jPG" alt="桌椅沙发设备" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-dark mb-3">桌椅沙发设备</h3>
@@ -507,14 +530,14 @@
                         </div>
                         
                         <div class="md:w-1/2 md:pl-12 mt-8 md:mt-0">
-                            <img src="场地布置.JPG" alt="需求沟通" class="w-full h-auto rounded-lg shadow-md">
+                           <!--  <img src="" alt="需求沟通" class="w-full h-auto rounded-lg shadow-md">-->
                         </div>
                     </div>
                     
                     <!-- 流程步骤 2 -->
                     <div class="flex flex-col md:flex-row items-center">
                         <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0 order-1 md:order-2">
-                            <img src="场地布置.JPG" alt="方案策划" class="w-full h-auto rounded-lg shadow-md">
+                          <!--img src="" alt="方案策划" class="w-full h-auto rounded-lg shadow-md">-->
                         </div>
                         
                         <div class="z-10 bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold order-2">
@@ -539,14 +562,14 @@
                         </div>
                         
                         <div class="md:w-1/2 md:pl-12 mt-8 md:mt-0">
-                            <img src="场地布置.JPG" alt="方案确认" class="w-full h-auto rounded-lg shadow-md">
+                         <!--   <img src="" alt="方案确认" class="w-full h-auto rounded-lg shadow-md">-->
                         </div>
                     </div>
                     
                     <!-- 流程步骤 4 -->
                     <div class="flex flex-col md:flex-row items-center">
                         <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0 order-1 md:order-2">
-                            <img src="场地布置.JPG" alt="执行准备" class="w-full h-auto rounded-lg shadow-md">
+                            <!--<img src="" alt="执行准备" class="w-full h-auto rounded-lg shadow-md">-->
                         </div>
                         
                         <div class="z-10 bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold order-2">
@@ -571,18 +594,499 @@
                         </div>
                         
                         <div class="md:w-1/2 md:pl-12 mt-8 md:mt-0">
-                            <img src="场地布置.JPG" alt="活动执行" class="w-full h-auto rounded-lg shadow-md">
+                            <!--   <img src="" alt="活动执行" class="w-full h-auto rounded-lg shadow-md">-->
                         </div>
                     </div>
                     
                     <!-- 流程步骤 6 -->
                     <div class="flex flex-col md:flex-row items-center">
                         <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0 order-1 md:order-2">
-                            <img src="场地布置.JPG" alt="后续服务" class="w-full h-auto rounded-lg shadow-md">
+                          <!--   <img src="" alt="后续服务" class="w-full h-auto rounded-lg shadow-md">-->
                         </div>
                         
                         <div class="z-10 bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold order-2">
                             6
                         </div>
                         
-                        <div class="md:w-1/2 md:pl-12 mt-8 md:mt
+                        <div class="md:w-1/2 md:pl-12 mt-8 md:mt-0 order-3">
+                            <h3 class="text-xl font-bold text-dark mb-3">后续服务</h3>
+                            <p class="text-gray-600">活动结束后，进行后续跟进和反馈收集，为客户提供活动总结和相关资料。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="section-padding bg-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">联系我们</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">无论您有任何问题或需求，我们都随时为您提供帮助</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-white rounded-xl shadow-lg p-8 h-full">
+                        <h3 class="text-xl font-bold text-dark mb-6">联系方式</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-primary/10 p-3 rounded-lg mr-4">
+                                    <i class="fa fa-map-marker text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-dark mb-1">公司地址</h4>
+                                    <p class="text-gray-600">河北省邯郸市丛台区</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary/10 p-3 rounded-lg mr-4">
+                                    <i class="fa fa-phone text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-dark mb-1">联系电话</h4>
+                                    <p class="text-gray-600">0310-8268868</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary/10 p-3 rounded-lg mr-4">
+                                    <i class="fa fa-weixin text-primary text-xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-medium text-dark mb-1">微信号</h4>
+			<div class="md:w-1/2 md:pr-12 mb-8 md:mb-0 order-1 md:order-2">
+                        <img src="微信二维码.png" alt="方案策划" class="w-full h-auto rounded-lg shadow-md">
+                        </div>
+
+                                    <p class="text-gray-600">yuanyanbo</p>
+
+                                    <a href="javascript:void(0)" id="copy-wechat" class="text-primary text-sm hover:underline mt-1 inline-block">
+                                        <i class="fa fa-copy mr-1"></i>扫码加微信
+                                    </a>
+                                    <p id="copy-success" class="text-green-500 text-sm mt-1 hidden">已复制！</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary/10 p-3 rounded-lg mr-4">
+                                    <i class="fa fa-mobile text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-dark mb-1">手机号码</h4>
+                                    <p class="text-gray-600">18231003133</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-10">
+                            
+                           
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 在线聊天窗口 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 h-full">
+                    <h3 class="text-xl font-bold text-dark mb-6">在线留言</h3>
+                    
+                    <div id="chat-container" class="flex flex-col h-[400px] border border-gray-200 rounded-lg overflow-hidden">
+                        <!-- 聊天消息区域 -->
+                        <div id="chat-messages" class="flex-1 p-4 overflow-y-auto bg-chat-light">
+                            <!-- 欢迎消息 -->
+                            <div class="flex items-end justify-start mb-4">
+                                <div class="flex items-center mb-1">
+                                    <img src="https://picsum.photos/id/237/40/40" alt="客服头像" class="w-8 h-8 rounded-full mr-2">
+                                    <span class="font-medium text-dark">客服小庆</span>
+                                </div>
+                                <div class="bg-chat-secondary text-chat-dark rounded-tl-xl rounded-tr-xl rounded-br-xl p-4 inline-block max-w-[80%]">
+                                    <p>您好！欢迎咨询庆典活动策划服务，您在此留言我可以实时收到。</p>
+                                    <p class="text-xs text-gray-500 mt-1">刚刚</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-end justify-start mb-4">
+                                <div class="flex items-center mb-1">
+                                    <img src="https://picsum.photos/id/237/40/40" alt="客服头像" class="w-8 h-8 rounded-full mr-2">
+                                    <span class="font-medium text-dark">客服小庆</span>
+                                </div>
+                                <div class="bg-chat-secondary text-chat-dark rounded-tl-xl rounded-tr-xl rounded-br-xl p-4 inline-block max-w-[80%]">
+                                    <p>为了更及时地为您提供服务，您可以直接添加我的微信：<span class="font-bold">yuanyanbo</span>，我们可以在微信上详细沟通您的需求。</p>
+                                    <p class="text-xs text-gray-500 mt-1">刚刚</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 输入区域 -->
+                        <div class="p-4 border-t border-gray-200 bg-white">
+                            <div class="flex">
+                                <input type="text" id="chat-input" placeholder="请留下你的微信或者联系方式" class="flex-1 px-4 py-2 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50">
+                                <button id="send-message" class="bg-primary text-white px-6 py-2 rounded-r-lg hover:bg-primary/90 transition-colors">
+                                    发送
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="bg-white text-primary p-2 rounded-lg">
+                            <i class="fa fa-star-o text-xl"></i>
+                        </div>
+                        <span class="text-xl font-bold text-white">庆典活动策划</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">专业的庆典活动策划与执行服务商，为您打造难忘的精彩时刻。</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weixin text-xl">18231003133           </i>
+                        </a>
+                                  
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">服务项目</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">开业庆典</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">周年庆典</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">产品发布</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">企业年会</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">文艺晚会</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">商务会议</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">关于我们</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">公司简介</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">企业文化</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">服务流程</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">成功案例</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">团队介绍</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">联系我们</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">联系方式</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fa fa-map-marker text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">河北省邯郸市丛台区</span>
+                        </li>
+                        
+                        <li class="flex items-start">
+                            <i class="fa fa-weixin text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">yuanyanbo</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-mobile text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">18231003133</span>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+                <p>© 2025 邯郸庆典活动策划 版权所有 </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 z-50">
+        <i class="fa fa-angle-up text-xl"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2', 'shadow-md');
+                navbar.classList.remove('py-3', 'shadow-sm');
+            } else {
+                navbar.classList.add('py-3', 'shadow-sm');
+                navbar.classList.remove('py-2', 'shadow-md');
+            }
+            
+            // 返回顶部按钮显示/隐藏
+            const backToTop = document.getElementById('back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
+            }
+        });
+        
+        // 移动端菜单切换
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动端菜单
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // 返回顶部按钮
+        // document.getElementById('back-to-top').addEventListener('click', function() {
+           //  window.scrollTo({
+              //   top: 0,
+               //  behavior: 'smooth'
+         //    });
+        });
+        
+        // 英雄区域轮播
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        const carouselIndicators = document.querySelectorAll('.carousel-indicator');
+        const prevButton = document.getElementById('prev-slide');
+        const nextButton = document.getElementById('next-slide');
+        let currentSlide = 0;
+        
+        function showSlide(index) {
+            // 隐藏所有轮播项
+            carouselItems.forEach(item => {
+                item.classList.add('opacity-0');
+                item.classList.remove('opacity-100');
+            });
+            
+            // 重置所有指示器
+            carouselIndicators.forEach(indicator => {
+                indicator.classList.remove('bg-white', 'w-8');
+                indicator.classList.add('bg-white/50', 'w-3');
+            });
+            
+            // 显示当前轮播项和激活指示器
+            carouselItems[index].classList.add('opacity-100');
+            carouselItems[index].classList.remove('opacity-0');
+            carouselIndicators[index].classList.add('bg-white', 'w-8');
+            carouselIndicators[index].classList.remove('bg-white/50', 'w-3');
+            
+            currentSlide = index;
+        }
+        
+        // 下一张幻灯片
+        function nextSlide() {
+            let nextIndex = currentSlide + 1;
+            if (nextIndex >= carouselItems.length) {
+                nextIndex = 0;
+            }
+            showSlide(nextIndex);
+        }
+        
+        // 上一张幻灯片
+        function prevSlide() {
+            let prevIndex = currentSlide - 1;
+            if (prevIndex < 0) {
+                prevIndex = carouselItems.length - 1;
+            }
+            showSlide(prevIndex);
+        }
+        
+        // 绑定按钮事件
+        prevButton.addEventListener('click', prevSlide);
+        nextButton.addEventListener('click', nextSlide);
+        
+        // 绑定指示器事件
+        carouselIndicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+        
+        // 自动轮播
+        let carouselInterval = setInterval(nextSlide, 5000);
+        
+        // 鼠标悬停时暂停轮播
+        document.getElementById('hero-carousel').addEventListener('mouseenter', () => {
+            clearInterval(carouselInterval);
+        });
+        
+        // 鼠标离开时恢复轮        // 鼠标离开时恢复轮播
+        document.getElementById('hero-carousel').addEventListener('mouseleave', () => {
+            carouselInterval = setInterval(nextSlide, 5000);
+        });
+        
+        // 在线聊天功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatInput = document.getElementById('chat-input');
+            const sendButton = document.getElementById('send-message');
+            const chatMessages = document.getElementById('chat-messages');
+            const wechatId = 'yuanyanbo';
+            const SCKEY = 'SCT281562TMErZTWbUVftkbXxOWQz5oapl';
+            
+            // 客服回复预设
+            const replies = [
+                "感谢您的留言！我们可以为您提供全方位的庆典活动策划服务，包括场地布置、节目安排、设备租赁等。",
+                "如需进一步了解我们的服务，请随时联系我们，电话：18231003133  微信：yuanyanbo。",
+                "我们的团队拥有丰富的经验，曾成功策划过各类大型庆典活动，您可以放心交给我们。",
+                "您想了解哪种类型的庆典活动呢？例如开业庆典、企业年会、产品发布会等。",
+                "请问您是否已经有了大致的活动预算和时间安排？我们可以根据您的需求提供详细方案。",
+                "为了更方便地为您服务，建议您添加我的微信：yuanyanbo，我们可以在微信上详细沟通您的需求。"
+            ];
+            
+            // 发送消息到微信
+            function sendToWechat(message) {
+                if (!SCKEY) return;
+                
+                const wechatData = {
+                    text: `来自网站的新咨询`,
+                    desp: `
+                        咨询内容：${message}
+                        联系方式：请添加微信yuanyanbo进一步沟通
+                    `
+                };
+                
+                fetch(`https://sctapi.ftqq.com/${SCKEY}.send`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: `text=${encodeURIComponent(wechatData.text)}&desp=${encodeURIComponent(wechatData.desp)}`
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        console.error('发送微信通知失败:', `HTTP错误，状态码：${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(result => {
+                    if (result.code !== 0) {
+                        console.error('发送微信通知失败:', `Server酱返回错误：${result.message}`);
+                    }
+                })
+                .catch(error => {
+                    console.error('发送微信通知失败:', error);
+                });
+            }
+            
+            // 发送消息
+            function sendMessage() {
+                const message = chatInput.value.trim();
+                if (!message) return;
+                
+                // 添加用户消息
+                const userMessage = document.createElement('div');
+                userMessage.className = 'flex items-end justify-end mb-4';
+                userMessage.innerHTML = `
+                    <div class="bg-chat-primary text-white rounded-tl-xl rounded-tr-xl rounded-bl-xl p-4 inline-block max-w-[80%]">
+                        <p>${message}</p>
+                        <p class="text-xs text-white/80 mt-1">刚刚</p>
+                    </div>
+                `;
+                chatMessages.appendChild(userMessage);
+                
+                // 发送消息到微信
+                sendToWechat(message);
+                
+                // 清空输入框
+                chatInput.value = '';
+                
+                // 滚动到底部
+                scrollToBottom();
+                
+                // 模拟客服回复
+                setTimeout(() => {
+                    // 随机选择一条回复
+                    const randomIndex = Math.floor(Math.random() * replies.length);
+                    let reply = replies[randomIndex];
+                    
+                    // 70%的概率添加微信引导
+                    if (Math.random() > 0.3) {
+                        reply += `\n\n您也可以直接添加我的微信：${wechatId}，我们可以在微信上更方便地沟通。`;
+                    }
+                    
+                    const botMessage = document.createElement('div');
+                    botMessage.className = 'flex items-end justify-start mb-4';
+                    botMessage.innerHTML = `
+                        <div class="flex items-center mb-1">
+                            <img src="https://picsum.photos/id/237/40/40" alt="客服头像" class="w-8 h-8 rounded-full mr-2">
+                            <span class="font-medium text-dark">客服小庆</span>
+                        </div>
+                        <div class="bg-chat-secondary text-chat-dark rounded-tl-xl rounded-tr-xl rounded-br-xl p-4 inline-block max-w-[80%]">
+                            <p>${reply}</p>
+                            <p class="text-xs text-gray-500 mt-1">刚刚</p>
+                        </div>
+                    `;
+                    chatMessages.appendChild(botMessage);
+                    
+                    // 滚动到底部
+                    scrollToBottom();
+                }, 1000);
+            }
+            
+            // 滚动到底部
+            function scrollToBottom() {
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            // 绑定发送按钮点击事件
+            sendButton.addEventListener('click', sendMessage);
+            
+            // 绑定回车键发送消息
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+            
+            // 自动滚动到底部
+            scrollToBottom();
+        });
+        
+        // 复制微信号功能
+        document.getElementById('copy-wechat').addEventListener('click', function() {
+            const wechatId = 'yuanyanbo';
+            navigator.clipboard.writeText(wechatId)
+                .then(() => {
+                    const copySuccess = document.getElementById('copy-success');
+                    copySuccess.classList.remove('hidden');
+                    setTimeout(() => {
+                        copySuccess.classList.add('hidden');
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('复制失败:', err);
+                    alert('复制失败，请手动复制微信号');
+                });
+        });
+    </script>
+</body>
+</html>
