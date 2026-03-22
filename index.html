@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-	 <meta name="baidu-site-verification" content="codeva-uoExbYkZMB" />
+	    <meta name="baidu-site-verification" content="codeva-uoExbYkZMB" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="河北邯郸提供专业活动搭建策划执行服务，LED高清大屏/舞台/绗架背景/音响/灯光/设备租赁，会议演出活动现场布置一站式解决方案。专业团队，高品质设备，为您的活动保驾护航。">
@@ -80,13 +80,18 @@
         }
     </style>
 <!-- 邯郸舞台设备租赁悬浮二维码 -->
-<div id="floating-qrcode" class="fixed bottom-6 right-6 z-40 transform transition-all duration-500 opacity-0 translate-y-10">
-  <div class="relative">
+<div class="fixed bottom-6 right-6 z-40 transform transition-all duration-300">
+  <div class="group relative">
+    <!-- 二维码触发按钮 -->
+    <div class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center cursor-pointer shadow-lg hover:bg-secondary hover:scale-110 transition-all">
+      <i class="fa fa-qrcode text-2xl"></i>
+    </div>
+    
     <!-- 二维码展开内容 -->
-    <div class="w-60 bg-white rounded-2xl shadow-xl p-4 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+    <div class="absolute bottom-full right-0 mt-4 w-60 bg-white rounded-lg shadow-xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
       <div class="text-center mb-3">
-        <div class="w-full h-48 bg-gray-100 rounded-xl flex items-center justify-center mb-2 overflow-hidden">
-          <img src="https://i.postimg.cc/htqXJYp8/image.png" alt="扫码加微信" class="w-full h-full object-cover rounded-xl">
+        <div class="w-full h-48 bg-gray-100 rounded-lg flex items-center justify-center mb-2">
+          <img c="https://i.postimg.cc/htqXJYp8/image.png" alt="扫码加微信" class="w-full h-full object-cover rounded-lg">
         </div>
         <p class="text-sm text-gray-600">扫码加微信</p>
       </div>
@@ -848,19 +853,13 @@
         </div>
     </footer>
 
-
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 z-50">
+        <i class="fa fa-angle-up text-lg"></i>
+    </button>
 
      <!-- JavaScript -->
     <script>
-        // 页面加载时的二维码动画
-        window.addEventListener('DOMContentLoaded', function() {
-            const floatingQrcode = document.getElementById('floating-qrcode');
-            setTimeout(() => {
-                floatingQrcode.classList.add('opacity-100', 'translate-y-0');
-                floatingQrcode.classList.remove('opacity-0', 'translate-y-10');
-            }, 500);
-        });
-        
         // 导航栏滚动效果
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
@@ -872,17 +871,15 @@
                 navbar.classList.remove('py-2', 'shadow-md');
             }
             
-            // 右侧悬浮二维码跟随
-            const floatingQrcode = document.getElementById('floating-qrcode');
-            if (window.scrollY > 100) {
-                floatingQrcode.classList.add('opacity-100', 'translate-y-0');
-                floatingQrcode.classList.remove('opacity-0', 'translate-y-10');
+            // 返回顶部按钮显示/隐藏
+            const backToTop = document.getElementById('back-to-top');
+            if (window.scrollY > 30000) {
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
             } else {
-                floatingQrcode.classList.add('opacity-100', 'translate-y-0');
-                floatingQrcode.classList.remove('opacity-0', 'translate-y-10');
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
             }
-            
-
         });
         
         // 移动端菜单切换
@@ -1140,7 +1137,6 @@
     </script>
 </body>
 </html>
-
 
 
 
